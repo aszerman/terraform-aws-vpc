@@ -1,5 +1,18 @@
 # AWS VPC Terraform module
 
+## JavaNS Custom:
+
+Para realizar cambios en este fork del módulo oficial, se debe ejecutar:
+
+git add x
+git commit -m 
+git push origin master
+
+
+Recordar que para mantener actualizado este proyecto, se debe realizar un update del fork desde GitHub en la cuenta de "aszerman"
+
+
+
 Terraform module which creates VPC resources on AWS.
 
 [![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
