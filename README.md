@@ -2,18 +2,21 @@
 
 ## JavaNS Custom:
 
-Para realizar cambios en este fork del módulo oficial, se debe ejecutar:
+Para realizar cambios en este fork del módulo oficial, se debe ejecutar desde la carpeta del sub-módulo:
 
 git add x
 git commit -m 
 git push origin master
 
+Luego desde la raiz del repo base-artifacts, hacer un add de este commit, un commit nuevo y un push, luego un tag si aplica.
+
+En caso de necesitar actualizar el submodulo (cambios realizados en GitHub):
+
+git submodule update --remote terraform/modules/aws/vpc
 
 Recordar que para mantener actualizado este proyecto, se debe realizar un update del fork desde GitHub en la cuenta de "aszerman"
 
-Para actualizar el submodulo:
 
-git submodule update --remote terraform/modules/aws/vpc
 
 
 Terraform module which creates VPC resources on AWS.

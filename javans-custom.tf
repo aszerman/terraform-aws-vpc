@@ -249,7 +249,7 @@ resource "aws_iam_role_policy" "dlm_lifecycle_policy" {
         Action = [
           "ec2:CreateTags"
         ]
-        Resource = "arn:aws:ec2:*::snapshot/*"
+        Resource = "arn:aws:ec2::*:snapshot/*"
       }
     ]
   })
@@ -257,9 +257,9 @@ resource "aws_iam_role_policy" "dlm_lifecycle_policy" {
 
 # Data Lifecycle Manager - SnapHourly
 resource "aws_dlm_lifecycle_policy" "snap_hourly" {
-  description        = "SnapHourly - 4 hour frequency, 12 snapshots retention"
+  description        = "SnapHourly_4h_12ret"
   execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
-  state             = "ENABLED"
+  state              = "ENABLED"
 
   policy_details {
     resource_types = ["INSTANCE"]
@@ -295,9 +295,9 @@ resource "aws_dlm_lifecycle_policy" "snap_hourly" {
 
 # Data Lifecycle Manager - SnapDaily
 resource "aws_dlm_lifecycle_policy" "snap_daily" {
-  description        = "SnapDaily - 24 hour frequency, 14 snapshots retention"
+  description        = "SnapDaily_24h_14ret"
   execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
-  state             = "ENABLED"
+  state              = "ENABLED"
 
   policy_details {
     resource_types = ["INSTANCE"]
@@ -333,9 +333,9 @@ resource "aws_dlm_lifecycle_policy" "snap_daily" {
 
 # Data Lifecycle Manager - SnapWeekly
 resource "aws_dlm_lifecycle_policy" "snap_weekly" {
-  description        = "SnapWeekly - Weekly frequency, 8 snapshots retention"
+  description        = "SnapWeekly_8w_ret"
   execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
-  state             = "ENABLED"
+  state              = "ENABLED"
 
   policy_details {
     resource_types = ["INSTANCE"]
@@ -344,10 +344,7 @@ resource "aws_dlm_lifecycle_policy" "snap_weekly" {
       name = "SnapWeekly"
 
       create_rule {
-        interval      = 1
-        interval_unit = "WEEKS"
-        times         = ["03:00"]
-        location      = "UTC"
+        cron_expression = "0 3 ? * SUN *"
       }
 
       retain_rule {
@@ -372,9 +369,9 @@ resource "aws_dlm_lifecycle_policy" "snap_weekly" {
 
 # Data Lifecycle Manager - SnapMonthly
 resource "aws_dlm_lifecycle_policy" "snap_monthly" {
-  description        = "SnapMonthly - Monthly frequency, 6 snapshots retention"
+  description        = "SnapMonthly_6m_ret"
   execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
-  state             = "ENABLED"
+  state              = "ENABLED"
 
   policy_details {
     resource_types = ["INSTANCE"]
@@ -383,10 +380,7 @@ resource "aws_dlm_lifecycle_policy" "snap_monthly" {
       name = "SnapMonthly"
 
       create_rule {
-        interval      = 1
-        interval_unit = "MONTHS"
-        times         = ["04:00"]
-        location      = "UTC"
+        cron_expression = "0 4 1 * ? *"
       }
 
       retain_rule {
@@ -411,9 +405,9 @@ resource "aws_dlm_lifecycle_policy" "snap_monthly" {
 
 # Data Lifecycle Manager - SnapYearly
 resource "aws_dlm_lifecycle_policy" "snap_yearly" {
-  description        = "SnapYearly - Yearly frequency, 3 years retention"
+  description        = "SnapYearly_3y_ret"
   execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
-  state             = "ENABLED"
+  state              = "ENABLED"
 
   policy_details {
     resource_types = ["INSTANCE"]
@@ -422,10 +416,7 @@ resource "aws_dlm_lifecycle_policy" "snap_yearly" {
       name = "SnapYearly"
 
       create_rule {
-        interval      = 1
-        interval_unit = "YEARS"
-        times         = ["05:00"]
-        location      = "UTC"
+        cron_expression = "0 5 1 1 ? *"
       }
 
       retain_rule {
