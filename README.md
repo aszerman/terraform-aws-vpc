@@ -11,6 +11,9 @@ git push origin master
 
 Recordar que para mantener actualizado este proyecto, se debe realizar un update del fork desde GitHub en la cuenta de "aszerman"
 
+Para actualizar el submodulo:
+
+git submodule update --remote terraform/modules/aws/vpc
 
 
 Terraform module which creates VPC resources on AWS.
