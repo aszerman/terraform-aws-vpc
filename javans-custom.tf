@@ -344,7 +344,7 @@ resource "aws_dlm_lifecycle_policy" "snap_weekly" {
       name = "SnapWeekly"
 
       create_rule {
-        cron_expression = "0 3 ? * SUN *"
+        cron_expression = "cron(0 3 ? * 0 *)"
       }
 
       retain_rule {
@@ -380,7 +380,7 @@ resource "aws_dlm_lifecycle_policy" "snap_monthly" {
       name = "SnapMonthly"
 
       create_rule {
-        cron_expression = "0 4 1 * ? *"
+        cron_expression = "cron(0 4 1 * ? *)"
       }
 
       retain_rule {
@@ -416,7 +416,7 @@ resource "aws_dlm_lifecycle_policy" "snap_yearly" {
       name = "SnapYearly"
 
       create_rule {
-        cron_expression = "0 5 1 1 ? *"
+        cron_expression = "cron(0 5 1 1 ? *)"
       }
 
       retain_rule {
