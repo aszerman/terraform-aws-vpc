@@ -344,7 +344,7 @@ resource "aws_dlm_lifecycle_policy" "snap_weekly" {
       name = "SnapWeekly"
 
       create_rule {
-        cron_expression = "cron(0 3 ? * 0 *)"
+        cron_expression = "cron(0 3 1,8,15,22 * ? *)"
       }
 
       retain_rule {
